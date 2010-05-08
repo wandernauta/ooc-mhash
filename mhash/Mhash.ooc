@@ -1,5 +1,6 @@
 use mhash
 include mhash
+import text/Buffer
 
 mhash_init: extern func (type: Algo) -> InstanceStruct*
 mhash: extern func (is: InstanceStruct*, plaintext: String, size: Long) -> Bool
@@ -46,14 +47,14 @@ Mhash: class {
         hash := this rawdigest()
         blocksize := mhash_get_block_size(this algo)
         i := 0
-        ret := ""
+        ret := Buffer new()
         
         while (i < blocksize) {
-            ret += "%.2x" format(hash[i])
+            ret append("%.2x" format(hash[i]))
             i += 1
         }        
 
-        return ret
+        return ret toString()
     }
 }
 
