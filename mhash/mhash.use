@@ -1,0 +1,7 @@
+Name: Mhash
+Version: 1.0
+Origin: git://github.com/joshthecoder/ooc-yaml.git
+Description: Binding for the Mhash hashing library
+Libs: -lmhash
+Includes: mhash.h
+SourcePath: .

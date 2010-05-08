@@ -1,0 +1,17 @@
+# ooc-mhash
+## A mhash binding for ooc
+
+ooc-mhash gives ooc programs access to a host of hash algorithms, which can be used to compute checksums, message digests, and other signatures. 
+
+This is a partial binding. You won't be able to use Mhash's Keygen and HMAC features yet.
+
+Here's an example of how you could use ooc-mhash:
+
+    import mhash/Mhash
+
+    m := Mhash new(Algo SHA1)
+    m feed("Hello")
+    m feed(" ")
+    m feed("World!")
+
+    "%s sez hi!" format(m hexdigest()) println()
