@@ -4,7 +4,7 @@ include mhash
 mhash_init: extern func (type: Algo) -> InstanceStruct*
 mhash: extern func (is: InstanceStruct*, plaintext: String, size: Long) -> Bool
 mhash_get_block_size: extern func (type: Algo) -> Long
-mhash_end: extern func (is: InstanceStruct*)    
+mhash_end: extern func (is: InstanceStruct*) -> Pointer
 
 InstanceStruct: cover from MHASH* {
 	hmac_key_size: extern Long
@@ -38,9 +38,7 @@ Mhash: class {
 
     rawdigest: func() -> UChar* {
         /** Returns the message digest as unsigned chars */
-        hash: UChar*
-        hash = mhash_end(this is)
-        return hash
+        return mhash_end(this is) as UChar*
     }
 
     hexdigest: func() -> String {
